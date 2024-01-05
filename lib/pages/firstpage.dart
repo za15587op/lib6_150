@@ -12,12 +12,10 @@ class _firstPageState extends State<firstPage> {
   List<Hobby> hobbys = [];
   List _seclectedItem = [];
 
-  String hobbyvalue = 'เลือกงานอดิเรก';
   @override
   void initState() {
     super.initState();
     hobbys = Hobby.gethobby();
-    print(hobbys.map((e) => e.hobby_th).toList());
   }
 
   List<Widget> createCheckboxHobby() {
@@ -31,9 +29,9 @@ class _firstPageState extends State<firstPage> {
             hy.value = value!;
 
             if (value) {
-              hobbys.add(hy.value as Hobby);
+              _seclectedItem.add(hy.hobby_en);
             } else {
-              hobbys.remove(hy.value);
+              _seclectedItem.remove(hy.hobby_en);
             }
           });
         },
@@ -57,7 +55,7 @@ class _firstPageState extends State<firstPage> {
           Column(
             children: createCheckboxHobby(),
           ),
-          Text(hobbyvalue),
+          Text(_seclectedItem.toString()),
         ],
       ),
     );
